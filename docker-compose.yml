@@ -12,9 +12,9 @@ services:
       #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_NAME: prothoma_blog
+      WORDPRESS_DB_NAME: database_name
       WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: H@3kqn8WaG%(iCUVtQ)
+      WORDPRESS_DB_PASSWORD: db_password
       WORDPRESS_TABLE_PREFIX: pb_
     depends_on:
       - db
@@ -47,7 +47,7 @@ services:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: prothoma_blog
-      MYSQL_ROOT_PASSWORD: H@3kqn8WaG%(iCUVtQ)
+      MYSQL_ROOT_PASSWORD: root_pasword
     restart: always
 
   phpmyadmin:
@@ -55,11 +55,11 @@ services:
     depends_on:
       - db
     environment:
-      MYSQL_ROOT_PASSWORD: H@3kqn8WaG%(iCUVtQ)
+      MYSQL_ROOT_PASSWORD: root_pasword
       PMA_HOST: db
     image: phpmyadmin
     ports:
-      - "3333:80"
+      - "3307:80"
     restart: always
     volumes:
       - ./wp-app:/var/www/html/phpmyadmin
